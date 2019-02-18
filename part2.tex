@@ -2,5 +2,22 @@
 \subsection{Choice of Input}
 %das erklären was wir auch schon in der Präsentation hatten
 \subsection{Learning Approaches}
+%Hier sollte erwähnt werden wieso wir Evolutionär Algorithmen verwenden und keine klassischen Neuronalen Netze
+%Bild mit Evolutionärer Algrotithmus allgemein, falls das noch nicht in Part 1 steht
 \subsubsection{Evolutionary Strategy 1}
 \subsubsection{Evolutionary Strategy 2}
+The second mutation algorithm we evaluated for learning the synaptic weights of the network is based on the evolutionary strategy introduced by Salimans et al. \cite{Salimans2017EvolutionSA}. Their algorithm repeatedly executes two phases 1) Random Pertubation of the weights and evaluation the resulting parameters by running the experiment and the 2) Combining the results of the individual pertubations to compute an estimation for the stochhastic gradient decent to update the weights. The algorithm is shown below: 
+\begin{algorithm}
+	\caption{Evolutionary Strategy 2}
+	\begin{algorithmic}[1]
+		\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+		\REQUIRE Learning rate $\alpha$, noise standard deviation $\sigma$, initial weights $w$
+		\FOR {$t = 0,1,2, ...$}
+		\STATE Sample $\epsilon_{1},...,\epsilon_{n} \sim \mathcal{N}\left( 0, I \right)$
+		\STATE Compute $F_{ i } = F(w_{ i } + \sigma \epsilon_{ i }= for i = 1, ..., n$
+		\STATE Set $w_{ t+1 } \leftarrow  w_{ t }+ \alpha \frac{ 1 }{ n \sigma } \sum_{ j = 1 }^{ n }{F_{ j } \epsilon_{ j }  }$
+		\ENDFOR
+	\end{algorithmic} 
+\end{algorithm}
+
+Since the simulation is non deterministic in our case it should provide more stable results that the local region of a individual is evaluated more closely, before the synaptic weights are updated.
