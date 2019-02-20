@@ -1,5 +1,5 @@
 \section{Introduction}
-Our Task in this intership was to find a machine learning method to control a robot arm such that robot arm throw a object in form of a cylinder as far as possible from his original position. For this expiremental task we got a Gazebo environment with a Table, a Hollie robot arm who was fixed on the table, a cylinder to throw and a camera which points on the cylinder, see picture .... 
+Our Task in this intership was to find a machine learning method to control a robot arm such that robot arm throw a object in form of a cylinder as far as possible from his original position. For this expiremental task we got a Gazebo environment with a Table, a Hollie robot arm who was fixed on the table, a cylinder to throw and a camera which points on the cylinder, see Fig. \ref{init_state}.
 As the focus in this intership was in neurorobotics we chose to use spiking neural network(SNN) as machine learning method. The goal was now to find a suitable learning algorithm for a spiking neuronal network which could solve the task. We came to the conclusion that a reinforcment learning algorithm was the best way to let the network learn and after search of reinforcment algorithms we diced to use evolutional Algorithms. 
 To design a spiking neuronal network we used the neurorobotic platform. It's a platform specialized for develop and train spiking neuronal networks. For that the platform includes the following things:
  \begin{itemize}
@@ -9,27 +9,33 @@ To design a spiking neuronal network we used the neurorobotic platform. It's a p
 \item a view output mechanism to monitor the simulation
 \item a so called virtual coach configure and start simulations for the learning task.
 \end{itemize} 
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=2.2in]{img/init_state.png}
+	\DeclareGraphicsExtensions.
+	\caption{General task enviornment with inital state }
+	\label{init_state}
+\end{figure}
 \section{Related Work}
 As we use Reinforcment Learning and spiking neuronal networks we do here a short instruction to them.
 \subsection{Reinforcment Learning}
-Reinforcment Learning is based on the interaction of a agent (in our case the robot arm) with his environment(Gazebo). To Learn, the agent get for every action in a state a reward(distance), depending on if the action was good or not(far or short distance) and a new state. If the action in the state was good, then it's more likeliky that the actor do the same action next time he is in this state again. To illustrate the whole learning process see picture \label{re_base}
+Reinforcment Learning is based on the interaction of a agent (in our case the robot arm) with his environment (in our case Gazebo). To Learn, the agent get for every action in a state a reward(distance) - depending on if the action was good or not(far or short distance)- and a new state. If the action in the corresponded state got a high reward, then it's more likeliky that the actor uses the same action next time he is in this state again. To see a simple illustration of the whole learning process see Fig. \ref{re_base}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=2.2in]{img/re_base.png}
 	\DeclareGraphicsExtensions.
 	\caption{General illustration of reinforcement learning}
-	\label{r_base}
+	\label{re_base}
 \end{figure}
 
 \subsection{Spiking Neuronal Networks}
-Spiking neuronal networks is a variant of artifical neuronal(ANN) networks which are closer to the human brain as model then other ANN. In SNN the information isn't represented by the autoput value of a neuron, it's represented by the rate a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. As in other ANN's there are weights which describes how much the a output spike of a previous neuron influence the next neuron in order. To train the the SNN u have to adept the weights, this is quiet difficult as there is no activation function like in standard ANN. In SNN each neurons got a activation potential and every time this got exceeded the neuron spikes.
+Spiking neuronal networks is a variant of artifical neuronal(ANN) networks which are closer to the human brain as model then other ANN. In SNN the information isn't represented by the autoput value of a neuron, as spikes of a single neuron always looks the same, it's represented in the timing a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. To learn, there are, as in other ANN's weights which describes how much a output spike of a previous neuron influence the next neuron in order. To train the SNN u have to adept this weights, which is quiet difficult as there is no activation function like in standard ANNs. Compared to other ANNs in SNNs each neuron got a activation potential and every time this got exceeded the neuron spikes with a predefined spike.
 
 \section{Throwing Challenge}
 \subsection{Task}
 As said our Task in this intership was to throw a cylinder as far as possible form a table. For this the experiment we got the following sequenz of events.
  \begin{itemize}
-\item State 1 inital state: The robot arm and the cylinder are in their original state, see picture..
+\item State 1 inital state: The robot arm and the cylinder are in their original state, see Fig. \ref{init_state}.
 \item State 2 throwing state: The robot arm move to the cylinder to throw or bump him away as far as possible. If the cylinder lands on the ground or 20 sec are over go back to state 1.
 \end{itemize}
 Our goal was now to optimaze the robot moves in state 2 with a SNN. For that we had to control 7 parameters with a SNN, 6 for the angles of the robot arm + 1 for open and close the hand. 
