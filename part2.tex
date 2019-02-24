@@ -1,7 +1,7 @@
 \section{Solutions}
 \subsection{Choice of Input}
 
-To gain useful information from the camera which was positioned next to the arm on the table classic image processing was used to extract features from the camera frames. An efficient algorithm for extracting the center points of the hand and the target object was implemented and an example of a processed image with respect to its original image is shown in figure \ref{processed_pic}.Due to the hardly limited scope of the camera the extracted informations could unfortunately not be used to improve our results.//
+To gain useful information from the camera which was positioned next to the arm on the table classic image processing was used to extract features from the camera frames. An efficient algorithm for extracting the center points of the hand and the target object was implemented and an example of a processed image with respect to its original image is shown in figure \ref{processed_pic}. Due to the hardly limited scope of the camera the extracted informations could unfortunately not be used to improve our results.\\
 
 \begin{figure}[H]
 	\centering
@@ -11,13 +11,13 @@ To gain useful information from the camera which was positioned next to the arm 
 	\label{processed_pic}
 \end{figure}
 
-Thus, only the center object was directly read from the system and was used all the time as input to the spiking neural network. The high changing rate of the input were one reason why the results were hardly unreproducible. To fix this problem the update rate of for the input was decreased and the values itself were casted to the second decimal position what led to slightly better reproducibility. 
+Thus, only the center object was directly read from the system and was used all the time as input to the spiking neural network. The high changing rate of the input were one reason why the results were hardly reproducible. To fix this problem the update rate of for the input was decreased and the values itself were casted to the second decimal position what led to slightly better reproducibility. 
 
 \subsection{Learning Approaches}
 %Hier sollte erwähnt werden wieso wir Evolutionär Algorithmen verwenden und keine klassischen Neuronalen Netze
 %Bild mit Evolutionärer Algrotithmus allgemein, falls das noch nicht in Part 1 steht
-Current methods for training spiking neural networks are often based on plasticity either spike-timing-dependent (STDP), rate-based, reward based or structural or are based on evolutionary algorithms. %hier sollte noch irgendwas dazwischen gerade halt keine idee :D
- For our purpose we chose an evolutionary approach. The basic idea behind an evolutionary or genetic algorithm is based upon biological evolution where the fitness of an individiuum decides if it survives and generates offspring. Given an initial population these algorithms are usually divided into 3 steps, as shown in Fig. \ref{evo_base}. 1) Evaluate the fitness of each individual given a fitness function f(). In our case this function is the distance achieved by running the experiment in the simulation. 2) Select the best-fit individuals for reproduction. 3) Breed and mutate indivduals to generate offsprings.
+Current methods for training spiking neural networks are often based on plasticity either spike-timing-dependent (STDP), rate-based, reward based or structural plasticity or are based on evolutionary algorithms. %hier sollte noch irgendwas dazwischen gerade halt keine idee :D
+ For our purpose we chose an evolutionary approach. The basic idea behind an evolutionary or genetic algorithm is inspired by biological evolution where the fitness of an individiuum decides if it survives and generates offspring. Given an initial population these algorithms are usually divided into 3 steps, as shown in Fig. \ref{evo_base}. 1) Evaluate the fitness of each individual given a fitness function f(). In our case this function is the distance achieved by running the experiment in the simulation. 2) Select the best-fit individuals for reproduction. 3) Breed and mutate indivduals to generate offsprings.
 
 \begin{figure}[H]
 	\centering
