@@ -33,7 +33,7 @@ Reinforcment Learning is based on the interaction of a agent (in our case the ro
 \end{figure}
 
 \subsection{Spiking Neuronal Networks}%muss noch korrigiert werden
-Spiking neuronal networks is a variant of artifical neuronal(ANN) networks which are closer to the human brain as model then other ANN. In SNN the information isn't represented by the autoput value of a neuron, as spikes of a single neuron always looks the same, it's represented in the timing a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. To learn, there are, as in other ANN's weights which describes how much a output spike of a previous neuron influence the next neuron in order. To train the SNN u have to adept this weights, which is quiet difficult as there is no activation function like in standard ANNs. Compared to other ANNs in SNNs each neuron got a activation potential and every time this got exceeded the neuron spikes with a predefined spike.
+Spiking neuronal networks is a variant of artifical neuronal (ANN) networks which are closer to the human brain as model then other ANN. In SNN the information isn't represented by the autoput value of a neuron, as spikes of a single neuron always looks the same, it's represented in the timing a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. To learn, there are, as in other ANN's weights which describes how much a output spike of a previous neuron influence the next neuron in order. To train the SNN u have to adept this weights, which is quiet difficult as there is no activation function like in standard ANNs. Compared to other ANNs in SNNs each neuron got a activation potential and every time this got exceeded the neuron spikes with a predefined spike.
 
 \section{Throwing Challenge}
 \subsection{Task}
@@ -47,7 +47,7 @@ We chose to only learn the throwing movement with the help of SNNs because of se
 
 \subsection{Challenges}
 \label{sec:challenges}
-The biggest challenge in this task is that the simulation is non deterministic. Even when throwing the cylinder with fixed pre-defined movements of the robot arm the results were not reproducible, which made it difficult to determine which movements were actually best for achieving a high distance. This also complicated the training of the SNN because we cannot reliably meassure the performance of the network.\\
+The biggest challenge in this task is that the simulation is non deterministic. Even when throwing the cylinder with fixed pre-defined movements of the robot arm, the results were not reproducible, which made it difficult to determine which movements were actually best for achieving a high distance. This also complicated the training of the SNN because we cannot reliably meassure the performance of the network.\\
 Another problem was that the physical simulation of the interaction of the robot hand and the cylinder could lead to unintended bugs which lead to unrealistic high distances, that dominated in our training approaches.\\
 In order to solve the challenge of non deterministic behaviour of the simulation a sollution would have been to run the experiment several times and choose the median of the achieved distances. But since it was not possible to speed up the simulation we decided to run the experimetn only once in order to decrease the time for training.\\
 
