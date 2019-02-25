@@ -46,7 +46,7 @@ The Task of this challenge was to teach the robot to throw the blue cylinder as 
 We chose to only learn the throwing movement with the help of SNNs because of several challenges which we examine in the following.
 
 \subsection{Challenges}
-\label{challenges}
+\label{sec:challenges}
 The biggest challenge in this task is that the simulation is non deterministic. Even when throwing the cylinder with fixed pre-defined movements of the robot arm the results were not reproducible, which made it difficult to determine which movements were actually best for achieving a high distance. This also complicated the training of the SNN because we cannot reliably meassure the performance of the network.\\
 Another problem was that the physical simulation of the interaction of the robot hand and the cylinder could lead to unintended bugs which lead to unrealistic high distances, that dominated in our training approaches.\\
 In order to solve the challenge of non deterministic behaviour of the simulation a sollution would have been to run the experiment several times and choose the median of the achieved distances. But since it was not possible to speed up the simulation we decided to run the experimetn only once in order to decrease the time for training.\\
