@@ -1,7 +1,7 @@
 \section{Solutions}
 \subsection{Choice of Input}
 
-To gain useful information from the camera which was positioned next to the arm on the table classic image processing was used to extract features from the camera frames. An efficient algorithm for extracting the center points of the hand and the target object was implemented and an example of a processed image with respect to its original image is shown in figure \ref{processed_pic}. Due to the hardly limited scope of the camera the extracted informations could unfortunately not be used to improve our results.\\
+To gain useful information from the camera which was positioned next to the arm on the table classic image processing was used to extract features from the camera frames. An efficient algorithm for extracting the center points of the hand and the target object was implemented and an example of a processed image with respect to its original image is shown in figure \ref{processed_pic}. Due to the limited scope of the camera the extracted informations could unfortunately not be used to improve our results.\\
 
 \begin{figure}[H]
 	\centering
@@ -11,7 +11,7 @@ To gain useful information from the camera which was positioned next to the arm 
 	\label{processed_pic}
 \end{figure}
 
-Thus, only the center object was directly read from the system and was used all the time as input to the spiking neural network. The high changing rate of the input were one reason why the results were hardly reproducible. To fix this problem the update rate of for the input was decreased and the values itself were casted to the second decimal position what led to slightly better reproducibility. 
+Thus, only the center object was directly read from the system and was used all the time as input to the spiking neural network. The high changing rate of the input were one of the reasons why the results were hardly reproducible. To fix this problem the update rate of for the input was decreased and the values itself were casted to the second decimal position what led to slightly better reproducibility. 
 
 \subsection{Learning Approaches}
 %Hier sollte erwähnt werden wieso wir Evolutionär Algorithmen verwenden und keine klassischen Neuronalen Netze
@@ -31,7 +31,7 @@ Current methods for training spiking neural networks are often based on plastici
 
 
 To verify the correct and efficient implementation of our algorithms an evaluation function was written to reduce simulation effort in the Neurorobotics platform. The evaluation function makes sure that the search for maxima in the feature space will be successful. The test scenario can be seen as a hill climbing problem with the distance function as the reward which is returned for every weight batch that is passed to it. The exemplary chosen function space is shown in blue and the best return values of our algorithm in red in figure \ref{fig:test_function}. For testing purposes the feature space was reduced to 2 weights and is increased to the number of output neurons during the test phase.
-Like in figure \ref{fig:test_function} can be seen, once a good starting point is found the algorithm starts varying the weights to increase the reward. 
+As you can see in figure \ref{fig:test_function}, once a good starting point is found the algorithm starts varying the weights to increase the reward. 
 
 \begin{figure}[H]
 	\centering

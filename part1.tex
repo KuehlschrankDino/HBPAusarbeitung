@@ -1,10 +1,10 @@
 \section{Introduction}
-The goal of the challenge was to enable a simulated robot arm to learn to throw a object (in our case a blue cylinder) as far as it is possible within the given simulation. The simulation in this case ran in the Neurorobotics Platform (NRP) which utilizes the Robotic Simulator Gazebo and the spiking neural network simulator nest.\\
+The goal of this course was to teach a simulated robot arm to throw an object (in our case a blue cylinder) as far as it is possible within the given simulation. The simulation in this case ran in the Neurorobotics Platform (NRP) which utilizes the Robotic Simulator Gazebo and the spiking neural network simulator nest.\\%hier evtl. noch Weblinks zu NEST NRP GAZEBO 
 The Experimental setup consisted of a table on which a HoLLiE robot arm and a blue cylinder were placed.
-The initial setup can be seen in Fig. \ref{init_state}. For every simulation iteration the cylinder was placed at the exact same position. 
+The initial setup can be seen in Fig. \ref{init_state}. For every iteration in the simulation the cylinder was placed at the exact same position. 
 As the focus in this course was neurorobtics we used spiking neural networks as the basis of our machine learning approach.  
-The goal was now to find a suitable learning algorithm for a spiking neuronal network which could solve the task. We came to the conclusion that a reinforcment learning algorithm was the best way to let the network learn and after search of reinforcment algorithms we diced to use evolutional Algorithms. 
-To design a spiking neuronal network we used the neurorobotic platform. It's a platform specialized for develop and train spiking neuronal networks. For that the platform includes the following things:
+The goal was to find a suitable learning algorithm for a spiking neuronal network which could solve the task. We chose a reinforcement learning approach in combination with an evolutionary strategy to adjust the weights of the network.
+For the simulation and design of the spiking neural network we used NRP including the SNN simulator NEST. For that the platform includes the following things:
  \begin{itemize}
 \item a Gazebo environment and simulation
 \item editors to create transfer functions to control the actors and get sensor data
@@ -19,9 +19,10 @@ To design a spiking neuronal network we used the neurorobotic platform. It's a p
 	\caption{General task enviornment with inital state }
 	\label{init_state}
 \end{figure}
-\section{Related Work}
+
+\section{Related Work}%muss noch korrigiert werden
 As we use Reinforcment Learning and spiking neuronal networks we do here a short instruction to them.
-\subsection{Reinforcment Learning}
+\subsection{Reinforcment Learning}%muss noch korrigiert werden
 Reinforcment Learning is based on the interaction of a agent (in our case the robot arm) with his environment (in our case Gazebo). To Learn, the agent get for every action in a state a reward(distance) - depending on if the action was good or not(far or short distance)- and a new state. If the action in the corresponded state got a high reward, then it's more likeliky that the actor uses the same action next time he is in this state again. To see a simple illustration of the whole learning process see Fig. \ref{re_base}
 \begin{figure}[H]
 	\centering
@@ -31,7 +32,7 @@ Reinforcment Learning is based on the interaction of a agent (in our case the ro
 	\label{re_base}
 \end{figure}
 
-\subsection{Spiking Neuronal Networks}
+\subsection{Spiking Neuronal Networks}%muss noch korrigiert werden
 Spiking neuronal networks is a variant of artifical neuronal(ANN) networks which are closer to the human brain as model then other ANN. In SNN the information isn't represented by the autoput value of a neuron, as spikes of a single neuron always looks the same, it's represented in the timing a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. To learn, there are, as in other ANN's weights which describes how much a output spike of a previous neuron influence the next neuron in order. To train the SNN u have to adept this weights, which is quiet difficult as there is no activation function like in standard ANNs. Compared to other ANNs in SNNs each neuron got a activation potential and every time this got exceeded the neuron spikes with a predefined spike.
 
 \section{Throwing Challenge}
