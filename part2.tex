@@ -10,7 +10,7 @@ To gain useful information from the camera, which was positioned next to the arm
 	\caption{Original image (left) and processed image with extracted hand and target (right)}
 	\label{fig:processed_pic}
 \end{figure}
-Thus, only the center coordinates of the cylinder were directly taken from the simulation at every timestep and used as input for the spiking neural network.
+Thus, only the center coordinates of the cylinder were directly taken from the simulation at every time step and used as input for the spiking neural network.
 The high changing rate of the input was one of the reasons why the results were hardly reproducible. 
 To fix this problem the update rate of the input was decreased and the values itself were rounded to the second decimal position what led to slightly better reproducibility. 
 
@@ -18,11 +18,12 @@ To fix this problem the update rate of the input was decreased and the values it
 %Hier sollte erwähnt werden wieso wir Evolutionär Algorithmen verwenden und keine klassischen Neuronalen Netze
 %Bild mit Evolutionärer Algrotithmus allgemein, falls das noch nicht in Part 1 steht
 Current methods for training spiking neural networks are often based on plasticity either spike-timing-dependent (STDP), rate-based, reward based or structural plasticity or are based on evolutionary algorithms. %hier sollte noch irgendwas dazwischen gerade halt keine idee :D
-For our purpose we chose an evolutionary approach. The basic idea behind an evolutionary is inspired by the biological evolution where the fitness of an individiuum decides if it survives and generates offspring. \\ Given an initial population these algorithms are usually divided into 3 steps, as shown in Fig. \ref{evo_base}. 
+For our purpose we chose an evolutionary approach. The basic idea behind an evolutionary algorithm is inspired by the biological evolution where the fitness of an individual decides if it survives and generates offspring. \\
+ Given an initial population these algorithms are usually divided into 3 steps, as shown in Fig. \ref{evo_base}. 
  \begin{enumerate}
  	\item Evaluate the fitness of each individual given a fitness function f(). In our case this function is the distance achieved by running the experiment in the simulation.
  	\item Select the best-fit individuals for reproduction.
- 	\item Breed and mutate indivduals to generate offsprings.
+ 	\item Breed and mutate individuals to generate offsprings.
  \end{enumerate}
 
 
@@ -79,4 +80,5 @@ The algorithm is shown below:
 	\end{algorithmic} 
 \end{algorithm}
 
-Since the simulation in our experiment is non deterministic it should provide more stable results that the local region of an individual is evaluated more closely, before the synaptic weights are updated, opposed to the strategy of of section \ref{sec:strategie_2}.
+Since the simulation in our experiment is non deterministic it should provide more stable results that %if the local region... ?? vielleicht check ich aber auch den satz nicht :D %
+the local region of an individual is evaluated more closely, before the synaptic weights are updated, opposed to the strategy of section \ref{sec:strategie_2}.
