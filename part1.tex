@@ -1,5 +1,5 @@
 \section{Introduction}
-The goal of this course was to teach a simulated robot arm to throw an object (in our case a blue cylinder) as far as it is possible within the given simulation. The simulation in this case ran % was hosted statt ran ? 
+The goal of this course was to teach a simulated robot arm to throw an object (in our case a blue cylinder) as far as it is possible within the given simulation. The simulation in this case was hosted 
 in the Neurorobotics Platform (NRP) which utilizes the Robotic Simulator Gazebo and the spiking neural network simulator nest.\\%hier evtl. noch Weblinks zu NEST NRP GAZEBO 
 The Experimental setup consisted of a table on which a HoLLiE robot arm and a blue cylinder were placed.
 The initial setup can be seen in Fig. \ref{init_state}. For every iteration in the simulation the cylinder was placed at the exact same position. 
@@ -21,8 +21,7 @@ For the simulation and design of the spiking neural network we used NRP includin
 	\label{init_state}
 \end{figure}
 
-\section{Related Work}%muss noch korrigiert werden
-As we use Reinforcement Learning and spiking neuronal networks we do here a short instruction.
+\section{Related Work}
 \subsection{Reinforcement Learning}%muss noch korrigiert werden
 Reinforcement Learning is based on the interaction of an agent (in our case the robot arm) with his environment (in our case Gazebo). To Learn, the agent gets for every action in a state a reward(distance) - depending on if the action was good or not(far or short distance)- and a new state. If the action in the corresponding state got a high reward, then it's more likely that the actor uses the same action next time he is in this state again. To see a simple illustration of the whole learning process see Fig. \ref{re_base}
 \begin{figure}[H]
@@ -33,16 +32,19 @@ Reinforcement Learning is based on the interaction of an agent (in our case the 
 	\label{re_base}
 \end{figure}
 
-\subsection{Spiking Neuronal Networks}%muss noch korrigiert werden
-Spiking neuronal networks are a variant of artificial neuronal (ANN) networks which are closer to the human brain as a model then other ANN. In SNN the information isn't represented by the output value of a neuron, as spikes of a single neuron always looks the same, it's represented in the timing a neuron spikes. For example the information can be represented by the difference from the present spike to the last spike. To learn there are as in other ANN's weights which describe how much an output spikes of a previous neuron influence the next neuron in order. To train the SNN one has to adept the weights, which is quite difficult as there is no activation function like in standard ANNs. Compared to other ANNs in SNNs each neuron got an activation potential and every time this got exceeded the neuron spikes with a predefined spike.
+\subsection{Spiking Neuronal Networks}
+Current state of the art artificial neural networks are based on simplified brain dynamics, where each neuron is modeled by a single, static, continuous-valued activation. Spiking neural networks on the other hand model the information transfer between neurons more closely to the human brain. Therefore information is transmitted via precise timing of spikes or a sequence of spikes.\\
+A spike of a neuron occurs when the membrane potential reaches a specific threshold. When a neuron fires it generates a spike which is emitted to other neurons. This spike either decreases or increases the potential of these neurons according to the signal they receive. Depending on the model after which these neurons operate, they enter a refractory period after they exceeded the spiking threshold. During the refractory period no new spikes are emitted by this neuron.\\
+Currently training SNNs remains a challenge because the transfer function of a spiking neuron is non-differentiable which is a requirement for the use of backpropagation \cite{DBLP:journals/corr/abs-1804-08150}.
+
 
 \section{Throwing Challenge}
 \subsection{Task}
 The Task of this challenge was to teach the robot to throw the blue cylinder as far as possible. Since the robot arm is equipped with 6 different joints for the movement of the arm and several more for the hand, we simplified the movement. Firstly by combining the control of the hand joints into one grasping movement. Secondly by dividing the throwing movement into three separate sub-movements which are:
  \begin{enumerate}
-\item approaching the cylinder
-\item grasping the cylinder
-\item throwing the cylinder
+\item \textit{Approach}: Move the hand of the robot next to the cylinder.
+\item \textit{Grasp}: Grasp the cylinder, using the pre-defined grasp-function as well as the thumb. The cylinder is now fused to the plugin due to a plugin which stabelizes the grasping process.
+\item \textit{Throwing}: Throw the cylinder, by moving the arm and opening the hand. 
 \end{enumerate}
 We chose to only learn the throwing movement with the help of SNNs because of several challenges which we examine in the following.
 
