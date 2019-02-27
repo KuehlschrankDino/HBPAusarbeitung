@@ -1,13 +1,13 @@
 \section{Introduction}
 The goal of this course was to teach a simulated robot arm to throw an object (in our case a blue cylinder) as far as it is possible within the given simulation. The simulation in this case was hosted 
-in the Neurorobotics Platform (NRP) which utilizes the Robotic Simulator Gazebo and the spiking neural network simulator nest.\\%hier evtl. noch Weblinks zu NEST NRP GAZEBO 
-The Experimental setup consisted of a table on which a HoLLiE robot arm and a blue cylinder were placed.
+in the \textit{Neurorobotics Platform (NRP)} which utilizes the Robotic Simulator \textit{Gazebo} and the spiking neural network simulator \textit{NEST}.\\%hier evtl. noch Weblinks zu NEST NRP GAZEBO 
+The Experimental setup consisted of a table on which a \textit{HoLLiE} robot arm and a blue cylinder were placed.
 The initial setup can be seen in Fig. \ref{init_state}. For every iteration in the simulation the cylinder was placed at the exact same position. 
 As the focus in this course was neurorobtics we used spiking neural networks as the basis of our machine learning approach.  
 The goal was to find a suitable learning algorithm for a spiking neuronal network which could solve the task. We chose a reinforcement learning approach in combination with an evolutionary strategy to adjust the weights of the network.
-For the simulation and design of the spiking neural network we used NRP including the SNN simulator NEST. For that the platform includes the following things:
+For the simulation and design of the spiking neural network we used \textit{NRP} including the SNN simulator \textit{NEST}. For that the platform includes the following things:
  \begin{itemize}
-\item Gazebo environment and simulation
+\item \textit{Gazebo} environment and simulation
 \item Editors to create transfer functions to control the actors and get sensor data
 \item An editor to create the neurons and synapses of the network
 \item A view output mechanism to monitor the simulation
@@ -23,7 +23,7 @@ For the simulation and design of the spiking neural network we used NRP includin
 
 \section{Related Work}
 \subsection{Reinforcement Learning}%muss noch korrigiert werden, ab hier korrigiert von Yannick 
-Reinforcement Learning is based on the interaction of an agent (in our case the robot arm) with its environment (in our case Gazebo). To learn, the agent gets for every action in a state a reward(distance) - depending on if the action was good or not(far or short distance)- and a new state. If the returned reward for the action in the corresponding state is high it is more likely that the actor uses the same action the next time he is in this state again. A simple illustration of the whole learning process is illustrated in Fig. \ref{re_base}
+Reinforcement Learning is based on the interaction of an agent (in our case the robot arm) with its environment (in our case \textit{Gazebo}). To learn, the agent gets for every action in a state a reward(distance) - depending on if the action was good or not(far or short distance)- and a new state. If the returned reward for the action in the corresponding state is high it is more likely that the actor uses the same action the next time he is in this state again. A simple illustration of the whole learning process is illustrated in Fig. \ref{re_base}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=2.2in]{img/re_base.png}
